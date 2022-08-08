@@ -4,6 +4,8 @@ using System.Collections;
 
 namespace KuanLun
 {
+    public delegate void DelegateFinishDialogue();
+
     [RequireComponent(typeof(AudioSource))]
     public class DialogueSystem : MonoBehaviour
     {
@@ -15,7 +17,7 @@ namespace KuanLun
         private TextMeshProUGUI textContent;
 
         private AudioSource aud;
-        public DataNPC dataNpc;
+        private DataNPC dataNpc;
         [SerializeField, Header("¤T¨¤§Î")]
         private GameObject goTriangle;
 
@@ -27,11 +29,15 @@ namespace KuanLun
         private void Awake()
         {
             aud = GetComponent<AudioSource>();
-            StartCoroutine(StartDialogue());
+            //StartCoroutine(StartDialogue());
         }
 
-        public IEnumerator StartDialogue()
+        public bool isDialogue;
+
+        public IEnumerator StartDialogue(DataNPC _dataNPC, DelegateFinishDialogue callback)
         {
+            isDialogue = true;
+            dataNpc = _dataNPC;
             textName.text = dataNpc.nameNPC;
             textContent.text = "";
             yield return StartCoroutine(Fade());
@@ -45,6 +51,8 @@ namespace KuanLun
                 }
             }
             StartCoroutine(Fade(false));
+            isDialogue = false;
+            callback();
         }
 
         private IEnumerator Fade(bool fadeIn = true)
