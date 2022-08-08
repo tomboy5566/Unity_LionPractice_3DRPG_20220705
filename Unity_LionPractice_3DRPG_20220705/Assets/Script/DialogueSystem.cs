@@ -19,34 +19,52 @@ namespace KuanLun
         [SerializeField, Header("三角形")]
         private GameObject goTriangle;
 
+        [SerializeField, Header("淡入速度")]
+        private float intervalFadeIn = 0.1f;
+        [SerializeField, Header("打字速度")]
+        private float intervalTypeEffect = 0.05f;
+
         private void Awake()
         {
             aud = GetComponent<AudioSource>();
+            StartCoroutine(StartDialogue());
+        }
 
-            StartCoroutine(FadeIn());
-
+        public IEnumerator StartDialogue()
+        {
             textName.text = dataNpc.nameNPC;
             textContent.text = "";
+            yield return StartCoroutine(Fade());
+
+            for (int i = 0; i < dataNpc.dataDialogues.Length; i++)
+            {
+                yield return StartCoroutine(TypeEffect(i));
+                while (!Input.GetKeyDown(KeyCode.E))
+                {
+                    yield return null;
+                }
+            }
+            StartCoroutine(Fade(false));
         }
 
-        private IEnumerator FadeIn()
+        private IEnumerator Fade(bool fadeIn = true)
         {
+            float increase = fadeIn ? 0.1f : -0.1f;
             for (int i = 1; i < 10; i++)
             {
-                dialogueSystem.alpha += 0.1f;
-                yield return new WaitForSeconds(0.1f);
+                dialogueSystem.alpha += increase;
+                yield return new WaitForSeconds(intervalFadeIn);
             }
-
-            StartCoroutine(TypeEffect());
         }
-        private IEnumerator TypeEffect()
+        private IEnumerator TypeEffect(int dialogueNumber)
         {
-            aud.PlayOneShot(dataNpc.dataDialogues[0].sound);
-            string content = dataNpc.dataDialogues[0].Content;
+            textContent.text = "";
+            aud.PlayOneShot(dataNpc.dataDialogues[dialogueNumber].sound);
+            string content = dataNpc.dataDialogues[dialogueNumber].Content;
             for (int i = 0; i < content.Length; i++)
             {
                 textContent.text += content[i];
-                yield return new WaitForSeconds(0.05f);
+                yield return new WaitForSeconds(intervalTypeEffect);
             }
             goTriangle.SetActive(true);
         }
