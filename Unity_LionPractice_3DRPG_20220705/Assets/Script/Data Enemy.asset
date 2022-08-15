@@ -15,7 +15,12 @@ MonoBehaviour:
   hp: 1407
   attack: 75
   rangeTrack: 10
-  rangeAttack: 2
-  speedWalk: 3
+  rangeAttack: 4
+  speedWalk: 2
   probilityDrop: 0.643
   goDrop: {fileID: 0}
+  timeIdleRange: {x: 2, y: 5}
+  layerTarget:
+    serializedVersion: 2
+    m_Bits: 8
+  intervalAttack: 6
