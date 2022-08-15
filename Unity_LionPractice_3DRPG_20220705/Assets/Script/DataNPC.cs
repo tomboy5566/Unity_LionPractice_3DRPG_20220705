@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace KuanLun
 {
-    [CreateAssetMenu(menuName = "KuanLun/Data NPC", fileName = "Data NPC")]
+    [CreateAssetMenu(menuName = "KuanLun/Data NPC", fileName = "Data NPC", order = 2)]
     public class DataNPC : ScriptableObject
     {
         [Header("NPC ¦WºÙ")]
