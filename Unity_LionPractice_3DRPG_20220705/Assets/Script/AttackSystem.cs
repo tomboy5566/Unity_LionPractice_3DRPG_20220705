@@ -9,7 +9,7 @@ namespace KuanLun
         [SerializeField, Header("§ðÀ»¸ê®Æ")]
         private DataAttack dataAttack;
 
-        private bool canAttack = true;
+        protected bool canAttack = true;
 
         public void StartAttack()
         {
@@ -37,6 +37,7 @@ namespace KuanLun
 
             yield return new WaitForSeconds(dataAttack.waitAttack);
             canAttack = true;
+            StopAttack();
         }
 
         private void CheckAttackArea()
@@ -50,6 +51,11 @@ namespace KuanLun
             {
                 print(hits[0].name);
             }
+        }
+
+        protected virtual void StopAttack()
+        {
+
         }
     }
 
