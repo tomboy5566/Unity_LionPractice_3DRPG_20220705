@@ -7,6 +7,7 @@ namespace KuanLun
 {
     public class EnemySystem : MonoBehaviour
     {
+        #region 資料
         [SerializeField, Header("敵人資料")]
         private DataEnemy dataEnemy;
         [SerializeField]
@@ -17,14 +18,16 @@ namespace KuanLun
         private Vector3 v3TargetPosition;
         private string parWalk = "走路觸發";
         private float timerIdle;
-
         private float timerAttack;
         private string parAttack = "攻擊觸發";
+        private EnemyAttack enemyAttack;
+        #endregion
 
         private void Awake()
         {
             ani = GetComponent<Animator>();
             nma = GetComponent<NavMeshAgent>();
+            enemyAttack = GetComponent<EnemyAttack>();
             nma.speed = dataEnemy.speedWalk;
         }
         private void Update()
@@ -66,11 +69,22 @@ namespace KuanLun
         }
         private void Track()
         {
+            if (ani.GetCurrentAnimatorStateInfo(0).IsName("Attack01"))
+            {
+                nma.velocity = Vector3.zero;
+            }
+
             nma.SetDestination(v3TargetPosition);
             ani.SetBool(parWalk, true);
-            if (Vector3.Distance(transform.position,v3TargetPosition) <= dataEnemy.rangeAttack)
+            ani.ResetTrigger(parAttack);
+
+            if (Vector3.Distance(transform.position, v3TargetPosition) <= dataEnemy.rangeAttack)
             {
                 stateEnemy = StateEnemy.Attack;
+            }
+            else
+            {
+                timerAttack = dataEnemy.intervalAttack;
             }
         }
         private void Attack()
@@ -85,6 +99,8 @@ namespace KuanLun
             {
                 ani.SetTrigger(parAttack);
                 timerAttack = 0;
+                enemyAttack.StartAttack();
+                stateEnemy = StateEnemy.Track;
             }
         }
         private void StateSwitcher()
@@ -107,12 +123,17 @@ namespace KuanLun
         }
         private void CheckTargetInTrackRange()
         {
-            if (stateEnemy == StateEnemy.Attack) return;
+
             Collider[] hits = Physics.OverlapSphere(transform.position, dataEnemy.rangeTrack, dataEnemy.layerTarget);
             if (hits.Length > 0)
             {
                 v3TargetPosition = hits[0].transform.position;
+                if (stateEnemy == StateEnemy.Attack) return;
                 stateEnemy = StateEnemy.Track;
+            }
+            else
+            {
+                stateEnemy = StateEnemy.Wander;
             }
         }
     }

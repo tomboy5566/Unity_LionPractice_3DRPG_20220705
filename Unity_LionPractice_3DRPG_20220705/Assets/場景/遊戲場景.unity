@@ -1526,19 +1526,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 8b2d11d64877f0b4cad5d45ec7d53473, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.73938566
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 8b2d11d64877f0b4cad5d45ec7d53473, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 8b2d11d64877f0b4cad5d45ec7d53473, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.67328215
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 8b2d11d64877f0b4cad5d45ec7d53473, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 8b2d11d64877f0b4cad5d45ec7d53473, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1546,7 +1546,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 8b2d11d64877f0b4cad5d45ec7d53473, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 84.642
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 8b2d11d64877f0b4cad5d45ec7d53473, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -4058,3 +4058,16 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &2129561129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2129561122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 546234257d910cb45aa7cbc1a07d8a03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dataAttack: {fileID: 11400000, guid: b2c4996ecff50b34d97a49344f1d773e, type: 2}
