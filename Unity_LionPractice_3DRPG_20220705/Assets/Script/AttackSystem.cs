@@ -8,8 +8,16 @@ namespace KuanLun
     {
         [SerializeField, Header("攻擊資料")]
         private DataAttack dataAttack;
+        [SerializeField, Header("攻擊動畫名稱")]
+        protected string nameAttackAnimation;
 
         protected bool canAttack = true;
+        protected Animator ani;
+
+        protected virtual void Awake()
+        {
+            ani = GetComponent<Animator>();
+        }
 
         public void StartAttack()
         {
@@ -42,6 +50,7 @@ namespace KuanLun
 
         private void CheckAttackArea()
         {
+            if (!ani.GetCurrentAnimatorStateInfo(0).IsName(nameAttackAnimation)) return;
             Collider[] hits = Physics.OverlapBox(
                 transform.position +
                 transform.TransformDirection(dataAttack.attackAreaOffset),
@@ -49,7 +58,7 @@ namespace KuanLun
                 transform.rotation, dataAttack.layerTarget);
             if (hits.Length > 0)
             {
-                print(hits[0].name);
+                hits[0].GetComponent<HealthSystem>().Hurt(dataAttack.attackDamage);
             }
         }
 

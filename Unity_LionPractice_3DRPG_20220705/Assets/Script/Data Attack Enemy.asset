@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdfd375d0f7f7764fb83804d8f43b694, type: 3}
   m_Name: Data Attack Enemy
   m_EditorClassIdentifier: 
-  attackDamage: 100
+  attackDamage: 20
   attackAreaColor: {r: 1, g: 0, b: 0, a: 0.5}
   attatckAreaSize: {x: 3, y: 4, z: 2}
   attackAreaOffset: {x: 1.32, y: 1.2, z: 2.85}

@@ -6,14 +6,14 @@ namespace KuanLun
 {
     public class PlayerAttack : AttackSystem
     {
-        private Animator ani;
+
         private ThirdPersonController tpc;
 
         private string parAttack = "§ðÀ»Ä²µo";
 
-        private void Awake()
+        protected override void Awake()
         {
-            ani = GetComponent<Animator>();
+            base.Awake();
             tpc = GetComponent<ThirdPersonController>();
         }
 

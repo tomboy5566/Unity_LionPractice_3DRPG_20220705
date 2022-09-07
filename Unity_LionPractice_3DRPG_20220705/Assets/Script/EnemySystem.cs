@@ -136,6 +136,11 @@ namespace KuanLun
                 stateEnemy = StateEnemy.Wander;
             }
         }
+
+        private void OnDisable()
+        {
+            nma.isStopped = true;
+        }
     }
 }
 
