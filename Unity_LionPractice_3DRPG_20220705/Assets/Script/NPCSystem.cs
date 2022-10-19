@@ -7,16 +7,16 @@ namespace KuanLun
     public class NPCSystem : MonoBehaviour
     {
         [SerializeField, Header("NPC對話資料")]
-        private DataNPC dataNPC;
+        public DataNPC dataNPC;
         [SerializeField, Header("NPC攝影機")]
-        private GameObject NPCCamera;
+        public GameObject NPCCamera;
 
         private Animator anTip;
         private string parTipFade = "提示觸發";
 
         private bool isInTrigger;
         private ThirdPersonController thirdPersonController;
-        private DialogueSystem dialogueSystem;
+        public DialogueSystem dialogueSystem;
 
         private Animator aniNPC;
         private string parDialogue = "對話開關";

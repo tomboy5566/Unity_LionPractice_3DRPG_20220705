@@ -10,9 +10,9 @@ namespace KuanLun
         [SerializeField, Header("血量資料")]
         protected DataHealth dataHealth;
         [SerializeField, Header("血條圖片")]
-        private Image healthImage;
+        protected Image healthImage;
 
-        private float hp;
+        protected float hp;
         private Animator ani;
         private string parHurt = "受傷觸發";
         private string parDead = "死亡判定";

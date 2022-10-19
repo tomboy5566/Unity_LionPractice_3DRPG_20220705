@@ -1,6 +1,7 @@
 using UnityEngine;
+#if UNITY_EDITOR
 using UnityEditor;
-using UnityEditor.TerrainTools;
+#endif
 
 namespace KuanLun
 {
@@ -19,6 +20,7 @@ namespace KuanLun
         public float dropProbability;
     }
 
+#if UNITY_EDITOR
     [CustomEditor(typeof(DataHealth))]
     public class DataHealthEditor : Editor
     {
@@ -45,5 +47,6 @@ namespace KuanLun
             serializedObject.ApplyModifiedProperties();
         }
     }
+#endif
 
 }

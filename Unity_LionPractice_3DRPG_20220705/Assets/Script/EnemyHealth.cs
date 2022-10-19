@@ -9,17 +9,35 @@ namespace KuanLun
         private EnemySystem enemySystem;
         private Material matDissolve;
         private string nameDissolve = "DissolveValue";
-        private float maxDissolve = 2f;
-        private float minDissolve = -2.5f;
+        private float maxDissolve = 2.5f;
+        private float minDissolve = -2.6f;
 
         private RockObjectPool rockObjectPool;
+
+        public delegate void delegateDead();
+
+        public delegateDead onDead;
 
         protected override void Awake()
         {
             base.Awake();
             enemySystem = GetComponent<EnemySystem>();
             matDissolve = GetComponentsInChildren<Renderer>()[0].material;
-            rockObjectPool = FindObjectOfType<RockObjectPool>();
+            //rockObjectPool = FindObjectOfType<RockObjectPool>();
+            rockObjectPool = GameObject.Find("ª«¥ó¦À¸H¤ù").GetComponent<RockObjectPool>();
+        }
+
+        private void OnDisable()
+        {
+
+        }
+
+        private void OnEnable()
+        {
+            hp = dataHealth.hp;
+            healthImage.fillAmount = 1;
+            enemySystem.enabled = true;
+            matDissolve.SetFloat(nameDissolve, 2.5f);
         }
 
         protected override void Dead()
@@ -38,6 +56,8 @@ namespace KuanLun
                 matDissolve.SetFloat(nameDissolve, maxDissolve);
                 yield return new WaitForSeconds(0.03f);
             }
+
+            onDead();
         }
 
         private void DropItem()

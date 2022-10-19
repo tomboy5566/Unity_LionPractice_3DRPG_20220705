@@ -14,9 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameNPC: "\u72D0\u72F8"
   dataDialogues:
-  - Content: blablabla
+  - Content: "\u600E\u9EBC\u73FE\u5728\u624D\u9192\u4F86\uFF1F\u9084\u662F\u8001\u6A23\u5B50\u7684\u60A0\u54C9\u554A......"
     sound: {fileID: 8300000, guid: 027bf53bcff47e6429354020a3170f0f, type: 3}
-  - Content: blablablablablabla
+  - Content: "\u600E\u9EBC\u4E00\u526F\u50BB\u81C9\uFF1F\u9B54\u5973\u5927\u4EBA\u8981\u7684\u6838\u5FC3\u788E\u7247\u5462\uFF1F"
     sound: {fileID: 8300000, guid: 027bf53bcff47e6429354020a3170f0f, type: 3}
-  - Content: blablablablablablablablabla
+  - Content: "\u4E0D\u6703\u662F\u5FD8\u4E86\u5427\uFF1F\u771F\u662F\u7684\uFF0C\u6240\u4EE5\u624D\u8AAA\u4EBA\u5076\u578B\u4E0D\u53EF\u9760......"
+    sound: {fileID: 8300000, guid: 027bf53bcff47e6429354020a3170f0f, type: 3}
+  - Content: "\u9084\u6123\u8457\u505A\u4EC0\u9EBC\uFF1F\u5FEB\u53BB\u627E\u788E\u7247\u56DE\u4F86\u554A\uFF01\u9B54\u5973\u5927\u4EBA\u6025\u8457\u8981\u5462\uFF01"
     sound: {fileID: 8300000, guid: 027bf53bcff47e6429354020a3170f0f, type: 3}
