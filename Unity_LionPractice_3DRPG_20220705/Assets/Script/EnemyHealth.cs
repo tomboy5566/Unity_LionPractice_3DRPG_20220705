@@ -38,6 +38,7 @@ namespace KuanLun
             healthImage.fillAmount = 1;
             enemySystem.enabled = true;
             matDissolve.SetFloat(nameDissolve, 2.5f);
+            maxDissolve = 2.5f;
         }
 
         protected override void Dead()
